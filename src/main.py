@@ -3,6 +3,8 @@
 # uvicorn src.main:app
 
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
+from typing import Dict
 
 app = FastAPI(
     title="FastAPI - Hello World code",
@@ -13,4 +15,5 @@ app = FastAPI(
 
 @app.get("/")
 def hello_world():
-    return {"Hello": "World"}
+    payload: Dict[str, str] = {"Hi": "World"}
+    return JSONResponse(payload)
